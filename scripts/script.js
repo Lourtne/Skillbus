@@ -569,7 +569,8 @@
         }
         else {
           if (type === 'email') {
-            if (!/^[A-Z][A-Z0-9._%+-]*[A-Z0-9]@[A-Z]+\.[A-Z]{2,4}$/i.test(value)) {
+            const re = /^(([^&lt;&gt;()\[\]\\.,;:\s@"]+(\.[^&lt;&gt;()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if (!re.test(value)) {
               masMessages.add('Не верно указан имейл');
               el.classList.add('error');
               valid = false;
